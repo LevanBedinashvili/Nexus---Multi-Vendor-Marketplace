@@ -1,0 +1,180 @@
+================================================================================
+MULTI-VENDOR MARKETPLACE - PROJECT TASKS & ROADMAP
+================================================================================
+
+Based on README.txt specifications, this document tracks project progress.
+
+================================================================================
+SPRINT 1: Backend Foundation & Auth (Days 1-5)
+================================================================================
+
+✅ Day 1: Setup Laravel project. Configure DB. Setup Github Repo.
+   - Laravel 11 project created
+   - Database configured (MySQL)
+   - Database collation fixed (utf8mb4_unicode_ci)
+
+✅ Day 2: Create Migration files and Models (User, Shop, Category, Product).
+   - ✅ Users table migration created (with role enum: admin, vendor, customer)
+   - ✅ User model created
+   - ❌ Shop migration/model - NOT DONE
+   - ❌ Category migration/model - NOT DONE
+   - ❌ Product migration/model - NOT DONE
+
+✅ Day 3: Install Laravel Sanctum. Build Authentication APIs.
+   - ✅ Laravel Sanctum installed and configured
+   - ✅ Register API endpoint (/api/register)
+   - ✅ Login API endpoint (/api/login)
+   - ✅ Logout API endpoint (/api/logout)
+   - ✅ Get User API endpoint (/api/user)
+   - ✅ CSRF token handling configured
+   - ✅ CORS configured for frontend
+
+❌ Day 4: Implement Middleware (CheckIsAdmin, CheckIsVendor).
+   - ❌ CheckIsAdmin middleware - NOT DONE
+   - ❌ CheckIsVendor middleware - NOT DONE
+
+❌ Day 5: Build basic CRUD Controllers for Categories (Admin only) and Shops (Vendor only).
+   - ❌ CategoryController - NOT DONE
+   - ❌ ShopController - NOT DONE
+
+================================================================================
+SPRINT 2: Product Management & Frontend Setup (Days 6-12)
+================================================================================
+
+❌ Day 6: Backend: Product CRUD. Handle image uploads (use storage:link).
+   - ❌ ProductController - NOT DONE
+   - ❌ Image upload functionality - NOT DONE
+   - ❌ Storage link setup - NOT DONE
+
+✅ Day 7: Frontend: Setup React + Vite + Tailwind + Axios + React Router.
+   - ✅ Next.js 16 setup (instead of React + Vite)
+   - ✅ Tailwind CSS configured
+   - ✅ Axios configured with interceptors
+   - ✅ CSRF token handling in frontend
+
+✅ Day 8: Frontend: Build Auth Pages (Login/Register) and connect to Backend.
+   - ✅ Login page created (/login)
+   - ✅ Register page created (/register)
+   - ✅ Connected to backend APIs
+   - ✅ Modern UI design implemented
+   - ✅ Error handling implemented
+
+❌ Day 9: Frontend: Vendor Dashboard. Allow Vendor to create a shop and add products.
+   - ❌ Vendor Dashboard page - NOT DONE
+   - ❌ Shop creation form - NOT DONE
+   - ❌ Product creation form - NOT DONE
+
+❌ Day 10: Frontend: Home Page. Fetch and display products (Grid layout).
+   - ❌ Home page with products - NOT DONE
+   - ❌ Product grid layout - NOT DONE
+
+❌ Day 11: Backend + Frontend: Implement Search and Filtering (by Category/Price).
+   - ❌ Search functionality - NOT DONE
+   - ❌ Category filtering - NOT DONE
+   - ❌ Price filtering - NOT DONE
+
+❌ Day 12: Refactor: Error handling and Form Validation.
+   - ⚠️ Basic error handling exists, but needs refactoring
+   - ⚠️ Form validation exists, but needs improvement
+
+================================================================================
+SPRINT 3: Cart, Orders, & Checkout (Days 13-18)
+================================================================================
+
+❌ Day 13: Frontend: Build the Shopping Cart logic (Redux/Context). Persist to localStorage.
+   - ❌ Shopping Cart state management - NOT DONE
+   - ❌ Redux Toolkit or Context API setup - NOT DONE
+   - ❌ localStorage persistence - NOT DONE
+
+❌ Day 14: Backend: Create Order and OrderItem migrations and controllers.
+   - ❌ Orders migration - NOT DONE
+   - ❌ OrderItems migration - NOT DONE
+   - ❌ OrderController - NOT DONE
+
+❌ Day 15: Backend: Implement Stripe Payment Intent API.
+   - ❌ Stripe integration - NOT DONE
+   - ❌ Payment Intent API - NOT DONE
+
+❌ Day 16: Frontend: Build Checkout Page. Integrate Stripe Elements.
+   - ❌ Checkout page - NOT DONE
+   - ❌ Stripe Elements integration - NOT DONE
+
+❌ Day 17: Backend: Handle "Post-Checkout" logic (Decrease product stock, clear cart, send email notification).
+   - ❌ Stock management - NOT DONE
+   - ❌ Email notifications - NOT DONE
+
+❌ Day 18: Frontend: "My Orders" page for Customers.
+   - ❌ My Orders page - NOT DONE
+
+================================================================================
+SPRINT 4: Polish & Admin Panel (Days 19-21)
+================================================================================
+
+❌ Day 19: Admin Panel (Frontend): Table to view all users and approve/delete shops.
+   - ❌ Admin Panel page - NOT DONE
+   - ❌ User management table - NOT DONE
+   - ❌ Shop approval/deletion - NOT DONE
+
+❌ Day 20: Vendor Dashboard Update: Show a list of orders specifically for that Vendor.
+   - ❌ Vendor orders view - NOT DONE
+
+❌ Day 21: UI Polish (Loaders, Toast Notifications, Empty States) and Deployment.
+   - ⚠️ Basic UI polish done (login/register pages)
+   - ❌ Loaders - NOT DONE
+   - ❌ Toast Notifications - NOT DONE
+   - ❌ Empty States - NOT DONE
+   - ❌ Deployment - NOT DONE
+
+================================================================================
+DATABASE SCHEMA STATUS
+================================================================================
+
+✅ users: (id, name, email, password, role: [admin, vendor, customer])
+❌ shops: (id, user_id, name, description, logo, is_active)
+❌ categories: (id, name, slug, image)
+❌ products: (id, shop_id, category_id, name, price, stock, description)
+❌ orders: (id, user_id, total_price, status, payment_method)
+❌ order_items: (id, order_id, product_id, quantity, price_at_purchase)
+
+================================================================================
+PROGRESS SUMMARY
+================================================================================
+
+✅ COMPLETED:
+   - Backend setup (Laravel 11)
+   - Database configuration
+   - User authentication (Sanctum)
+   - Auth APIs (register, login, logout, get user)
+   - Frontend setup (Next.js + Tailwind)
+   - Auth pages (Login/Register) with modern UI
+   - CSRF token handling
+   - CORS configuration
+
+❌ TODO (Priority Order):
+   1. Create Shop, Category, Product migrations and models
+   2. Create middleware (CheckIsAdmin, CheckIsVendor)
+   3. Create CategoryController (Admin CRUD)
+   4. Create ShopController (Vendor CRUD)
+   5. Create ProductController with image uploads
+   6. Build Vendor Dashboard
+   7. Build Home Page with products
+   8. Implement Search and Filtering
+   9. Shopping Cart functionality
+   10. Orders and OrderItems
+   11. Stripe Payment integration
+   12. Checkout page
+   13. Admin Panel
+   14. UI Polish (Loaders, Toasts, Empty States)
+   15. Deployment
+
+================================================================================
+NOTES
+================================================================================
+
+- Frontend uses Next.js 16 instead of React + Vite (as per project setup)
+- Authentication is working with CSRF token handling
+- UI has been modernized with slate color scheme
+- Database collation fixed for MySQL 5.7 compatibility
+
+================================================================================
+
