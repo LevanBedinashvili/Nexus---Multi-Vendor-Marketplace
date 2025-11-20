@@ -1,66 +1,282 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛒 Nexus Market - Multi-Vendor Marketplace
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, scalable Multi-Vendor E-Commerce Marketplace built with a headless architecture. This platform allows multiple vendors to create shops, manage products, and sell to customers through a unified marketplace.
 
-## About Laravel
+## 📋 Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [API Endpoints](#api-endpoints)
+- [Database Schema](#database-schema)
+- [Authentication](#authentication)
+- [Development](#development)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Current Features
+- ✅ User Authentication (Register, Login, Logout)
+- ✅ Role-Based Access Control (Admin, Vendor, Customer)
+- ✅ Modern UI with Tailwind CSS
+- ✅ CSRF Protection with Laravel Sanctum
+- ✅ RESTful API Architecture
 
-## Learning Laravel
+### Planned Features
+- 🚧 Vendor Dashboard (Shop Management)
+- 🚧 Product Management (CRUD Operations)
+- 🚧 Shopping Cart
+- 🚧 Order Management
+- 🚧 Payment Integration (Stripe)
+- 🚧 Search & Filtering
+- 🚧 Admin Panel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠 Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Backend
+- **Framework**: Laravel 11 (API Mode)
+- **Language**: PHP 8.2+
+- **Authentication**: Laravel Sanctum
+- **Database**: MySQL 8.0+
+- **Package Manager**: Composer
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Frontend
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **HTTP Client**: Axios
+- **Package Manager**: npm
 
-## Laravel Sponsors
+### Development Tools
+- **Version Control**: Git
+- **Code Quality**: ESLint, Laravel Pint
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🏗 Architecture
 
-### Premium Partners
+This project follows a **Headless Architecture** pattern:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```
+┌─────────────────┐         ┌─────────────────┐
+│   Frontend      │         │    Backend      │
+│   (Next.js)     │ ◄─────► │   (Laravel)     │
+│   Port: 3000    │  API    │   Port: 8000    │
+└─────────────────┘         └─────────────────┘
+                                      │
+                                      ▼
+                              ┌─────────────────┐
+                              │    Database     │
+                              │    (MySQL)      │
+                              └─────────────────┘
+```
 
-## Contributing
+- **Frontend**: Next.js application running on port 3000
+- **Backend**: Laravel API running on port 8000
+- **Database**: MySQL database
+- **Communication**: RESTful API with JSON responses
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📁 Project Structure
 
-## Code of Conduct
+```
+Multi-Vendor MarketPlace/
+├── backend/                 # Laravel API
+│   ├── app/
+│   │   ├── Http/
+│   │   │   └── Controllers/ # API Controllers
+│   │   └── Models/          # Eloquent Models
+│   ├── config/              # Configuration files
+│   ├── database/
+│   │   └── migrations/      # Database migrations
+│   └── routes/
+│       └── api.php          # API routes
+│
+├── frontend/                # Next.js Application
+│   ├── app/                 # Next.js App Router
+│   │   ├── login/           # Login page
+│   │   ├── register/        # Register page
+│   │   └── layout.tsx       # Root layout
+│   ├── lib/                 # Utilities
+│   │   └── axios.ts         # API client
+│   └── types/                # TypeScript types
+│
+└── README.md                # This file
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🚀 Getting Started
 
-## Security Vulnerabilities
+### Prerequisites
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- PHP 8.2 or higher
+- Composer
+- Node.js 18+ and npm
+- MySQL 8.0+
+- XAMPP (or equivalent)
 
-## License
+### Backend Setup
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
+
+2. Install dependencies:
+```bash
+composer install
+```
+
+3. Copy environment file:
+```bash
+cp .env.example .env
+```
+
+4. Generate application key:
+```bash
+php artisan key:generate
+```
+
+5. Configure your `.env` file:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nexus_market
+DB_USERNAME=root
+DB_PASSWORD=
+
+SANCTUM_STATEFUL_DOMAINS=localhost:3000,127.0.0.1:3000
+SESSION_DOMAIN=null
+FRONTEND_URL=http://localhost:3000
+DB_COLLATION=utf8mb4_unicode_ci
+```
+
+6. Run migrations:
+```bash
+php artisan migrate
+```
+
+7. Start the Laravel development server:
+```bash
+php artisan serve
+```
+
+The API will be available at `http://localhost:8000`
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create `.env.local` file:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+4. Start the Next.js development server:
+```bash
+npm run dev
+```
+
+The frontend will be available at `http://localhost:3000`
+
+## 🔌 API Endpoints
+
+### Authentication
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/api/register` | Register a new user | No |
+| POST | `/api/login` | Login user | No |
+| POST | `/api/logout` | Logout user | Yes |
+| GET | `/api/user` | Get authenticated user | Yes |
+
+### Example Request (Register)
+
+```bash
+curl -X POST http://localhost:8000/api/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123",
+    "password_confirmation": "password123",
+    "role": "customer"
+  }'
+```
+
+## 🗄 Database Schema
+
+### Users Table
+- `id` - Primary key
+- `name` - User's full name
+- `email` - Unique email address
+- `password` - Hashed password
+- `role` - Enum: `admin`, `vendor`, `customer` (default: `customer`)
+- `email_verified_at` - Timestamp
+- `created_at`, `updated_at` - Timestamps
+
+### Planned Tables
+- `shops` - Vendor shop information
+- `categories` - Product categories
+- `products` - Product listings
+- `orders` - Customer orders
+- `order_items` - Order line items
+
+## 🔐 Authentication
+
+This project uses **Laravel Sanctum** for SPA (Single Page Application) authentication with cookie-based sessions.
+
+### Authentication Flow
+
+1. Frontend requests CSRF cookie from `/sanctum/csrf-cookie`
+2. User submits login/register form
+3. Backend validates credentials and creates session
+4. Subsequent API requests include session cookie automatically
+5. Protected routes check `auth:sanctum` middleware
+
+### CSRF Protection
+
+- CSRF tokens are automatically handled via cookies
+- Frontend axios interceptor fetches CSRF cookie before POST/PUT/DELETE requests
+- Tokens are included in request headers automatically
+
+## 💻 Development
+
+### Running Both Servers
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+php artisan serve
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm run dev
+```
+
+### Code Style
+
+- **Backend**: Laravel Pint (PHP)
+- **Frontend**: ESLint (TypeScript/JavaScript)
+
+## 📝 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 👤 Author
+
+**Levan Bedinashvili**
+
+- GitHub: [@LevanBedinashvili](https://github.com/LevanBedinashvili)
+
+---
+
+⭐ Star this repo if you find it helpful!
