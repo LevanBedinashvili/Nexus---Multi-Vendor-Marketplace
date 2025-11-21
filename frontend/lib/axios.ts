@@ -53,7 +53,7 @@ api.interceptors.request.use(
           }
         }
       } catch {
-        //
+        // CSRF cookie fetch failed, continue anyway
       }
     }
 
